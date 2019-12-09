@@ -13,6 +13,17 @@ function set_color {
   echo -e "\[\033[${fg}${bg}m\]"
 }
 
+function __powerline_machine_info_prompt {
+  local machine_info=""
+  local color=${MACHINE_INFO_THEME_PROMPT_COLOR}
+
+  if [[ -v MACHINE_TYPE ]]; then
+    machine_info="\\[${MACHINE_TYPE}\\]"
+  fi
+
+  [[ -n "${machine_info}" ]] && echo "${machine_info}|${color}"
+}
+
 function __powerline_user_info_prompt {
   local user_info=""
   local color=${USER_INFO_THEME_PROMPT_COLOR}
